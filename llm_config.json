@@ -1,4 +1,4 @@
 {
-  "current_provider": "lemonade",
-  "current_model": "Qwen-2.5-7B-Instruct-NPU"
+  "current_provider": "ollama",
+  "current_model": "qwen2.5:7b"
 }

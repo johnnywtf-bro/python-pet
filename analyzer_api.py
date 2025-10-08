@@ -303,12 +303,20 @@ def analyze(payload: AnalyzeReq):
         points=points
     )
 
-if __name__ == "__main__":
-    import uvicorn
-    uvicorn.run(app, host="127.0.0.1", port=5005)
+# 🆕 整合其他功能（在 app 定義完成之後）
 try:
     from summarizer_plus import summarize_news_plus as _summarize_news
     from summarizer_plus import summarize_article_plus as _summarize_article
     print("[analyzer_api] using summarizer_plus")
 except Exception as e:
     print("[analyzer_api] summarizer_plus not available:", e)
+
+# 🆕 整合 extract API
+from extract_api import setup_extract_routes
+setup_extract_routes(app)
+print("✅ Extract API 已整合")
+
+# 最後才是程式入口
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(app, host="127.0.0.1", port=5005)

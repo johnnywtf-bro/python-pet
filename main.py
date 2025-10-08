@@ -4,8 +4,15 @@ Doro Desktop Pet - 主程式入口（整合啟動器功能）
 """
 import os
 import sys
-from PyQt5 import QtCore
+from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5.QtWidgets import QShortcut
+from PyQt5.QtGui import QKeySequence
 from config import setup_qt_environment
+from speech_vosk import VoskStreamer
+from reminders import (
+    ReminderListWindow, ReminderChecker, ReminderManager, show_reminder_popup
+)
+from inbox_handler import bootstrap_memory_from_inbox, check_inbox_exists
 import asyncio
 
 # 在建立任何 Qt 物件前設定環境
@@ -36,7 +43,6 @@ def _append_run_path():
 
 _append_run_path()
 
-from PyQt5 import QtWidgets, QtGui
 import random
 from ai_chat import DoroAIChat
 from config import PetConfig
@@ -223,7 +229,7 @@ def setup_application():
     return app
 
 def start_ai_mode_with_model(model_info):
-    """啟動 AI 模式並設定模型"""
+    """啟動 AI 模式並設定模型（整合 inbox 功能）"""
     print("進入 start_ai_mode_with_model")
     
     # 首先設定模型
@@ -245,20 +251,54 @@ def start_ai_mode_with_model(model_info):
     ai = DoroAIChat(pet)
     print("DoroAIChat 建立完成")
     
+    # 🆕 檢查是否有從世界提取的 Agent 資料
+    print("🔍 [DEBUG] 正在檢查 inbox...")
+    has_inbox = check_inbox_exists()
+    print(f"🔍 [DEBUG] check_inbox_exists() 返回: {has_inbox}")
+
+    if has_inbox:
+        print("📥 檢測到 inbox 資料，將在 AI 初始化後處理")
+    else:
+        print("📭 沒有檢測到 inbox 資料")
+
     # 顯示當前使用的模型
     try:
         if model_info:
             model_name = model_info['display_name']
             provider = model_info['provider']
-            if provider == 'lemonade':
-                startup_msg = f"AI 模式啟動！我現在使用高效的 NPU 模型 {model_name} 🚀"
-            else:
-                startup_msg = f"AI 模式啟動！我現在使用 {model_name} 💻"
             
-            # 延遲顯示，讓 AI 初始化完成
-            QtCore.QTimer.singleShot(2000, lambda: pet.ai_speak(startup_msg, "happy"))
+            # 準備啟動訊息
+            if provider == 'lemonade':
+                normal_startup_msg = f"AI 模式啟動！我現在使用高效的 NPU 模型 {model_name} 🚀"
+            else:
+                normal_startup_msg = f"AI 模式啟動！我現在使用 {model_name} 💻"
+            
+            # 延遲處理，讓 AI 初始化完成
+            def delayed_initialization():
+                """延遲初始化邏輯"""
+                print("=" * 60)
+                print("🔍 [DEBUG] delayed_initialization 被調用")
+                print(f"🔍 [DEBUG] 當前 has_inbox = {has_inbox}")
+                print(f"🔍 [DEBUG] AI 就緒狀態 = {ai.is_ai_ready()}")
+                print("=" * 60)
+                
+                # 🆕 先處理 inbox（如果有的話）
+                if has_inbox:
+                    print("⏳ 開始處理 inbox...")
+                    bootstrap_memory_from_inbox(ai)
+                    # inbox 處理完後，AI 會自己說問候語
+                else:
+                    print("💬 顯示正常啟動訊息")
+                    pet.ai_speak(normal_startup_msg, "happy")
+            
+            # 延遲 5 秒執行（給 AI 更多初始化時間）
+            print("⏰ 設置 5 秒後執行 delayed_initialization")
+            QtCore.QTimer.singleShot(5000, delayed_initialization)
+            
     except Exception as e:
         print(f"顯示模型信息失敗: {e}")
+        import traceback
+        traceback.print_exc()
     
     return pet
 
