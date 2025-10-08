@@ -1,0 +1,649 @@
+/* dashboard/modern_styles.qss - 更新版本 */
+/* 現代化角色面板樣式 - 白色按鈕版本 */
+
+/* 主窗口 */
+QMainWindow {
+    background-color: #ffffff;
+    border: 1px solid #e1e5e9;
+    border-radius: 12px;
+}
+
+/* 側邊欄 */
+CollapsibleSidebar {
+    background-color: #f8f9fa;
+    border-right: 1px solid #e9ecef;
+}
+
+/* 圖標按鈕 */
+IconButton {
+    background-color: transparent;
+    border: none;
+    border-radius: 12px;
+    padding: 8px;
+    margin: 2px;
+}
+
+IconButton:hover {
+    background-color: #e9ecef;
+}
+
+/* 內容區域 */
+QStackedWidget {
+    background-color: #ffffff;
+    border: none;
+}
+
+/* 頁面標題 */
+QLabel[objectName="h1"] {
+    font-size: 28px;
+    font-weight: 600;
+    color: #212529;
+    margin-bottom: 16px;
+}
+
+QLabel[objectName="h2"] {
+    font-size: 20px;
+    font-weight: 500;
+    color: #495057;
+    margin: 12px 0px 8px 0px;
+}
+
+/* 狀態卡片 */
+QFrame[objectName="statusCard"] {
+    background-color: #ffffff;
+    border: 2px solid #e9ecef;
+    border-radius: 16px;
+    padding: 20px;
+    margin: 8px 0px;
+}
+
+/* 頭像 */
+QLabel[objectName="avatar"] {
+    border: 3px solid #e9ecef;
+    border-radius: 48px;
+    background-color: #f8f9fa;
+}
+
+/* 寵物名稱 */
+QLabel[objectName="petName"] {
+    font-size: 24px;
+    font-weight: 700;
+    color: #212529;
+}
+
+/* 天數標籤 */
+QLabel[objectName="days"] {
+    font-size: 14px;
+    color: #6c757d;
+    margin-left: 8px;
+}
+
+/* 星級顯示 */
+QLabel[objectName="stars"] {
+    font-size: 20px;
+    color: #ffc107;
+    font-weight: bold;
+}
+
+/* 進度條 */
+QProgressBar {
+    border: 2px solid #e9ecef;
+    border-radius: 8px;
+    background-color: #f8f9fa;
+    text-align: center;
+    font-weight: 600;
+    height: 24px;
+}
+
+QProgressBar[objectName="hungerBar"]::chunk {
+    background-color: qlineargradient(x1: 0, y1: 0, x2: 1, y2: 0,
+                      stop: 0 #ff6b6b, stop: 1 #ff8e8e);
+    border-radius: 6px;
+    margin: 2px;
+}
+
+QProgressBar[objectName="affBar"]::chunk {
+    background-color: qlineargradient(x1: 0, y1: 0, x2: 1, y2: 0,
+                      stop: 0 #4ecdc4, stop: 1 #44a08d);
+    border-radius: 6px;
+    margin: 2px;
+}
+
+/* 背包格子 */
+QPushButton[objectName="invSlot"] {
+    background-color: #f8f9fa;
+    border: 2px solid #e9ecef;
+    border-radius: 12px;
+    padding: 8px;
+    min-width: 72px;
+    min-height: 72px;
+}
+
+QPushButton[objectName="invSlot"]:hover {
+    background-color: #e9ecef;
+    border-color: #ced4da;
+}
+
+QPushButton[objectName="invSlot"]:checked {
+    background-color: #e3f2fd;
+    border-color: #2196f3;
+}
+
+/* 商店卡片 */
+QFrame[objectName="shopCard"] {
+    background-color: #ffffff;
+    border: 2px solid #e9ecef;
+    border-radius: 16px;
+    padding: 16px;
+    margin: 8px;
+}
+
+QFrame[objectName="shopCard"]:hover {
+    border-color: #ced4da;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* 按鈕樣式 - 白色版本 */
+QPushButton {
+    background-color: #ffffff;
+    color: #333333;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 8px 16px;
+    font-weight: 500;
+    font-size: 14px;
+}
+
+QPushButton:hover {
+    background-color: #f8f9fa;
+    border-color: #d0d0d0;
+}
+
+QPushButton:pressed {
+    background-color: #e9ecef;
+    border-color: #ced4da;
+}
+
+/* 不可用按鈕 - 灰色版本 */
+QPushButton:disabled {
+    background-color: #6c757d;
+    color: #ffffff;
+    border-color: #6c757d;
+}
+
+/* 藍色主按鈕（買/賣按鈕） */
+QPushButton[class="primary"] {
+    background-color: #007bff;
+    color: white;
+    border: 1px solid #007bff;
+}
+
+QPushButton[class="primary"]:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+}
+
+QPushButton[class="primary"]:pressed {
+    background-color: #004085;
+    border-color: #004085;
+}
+
+/* 特殊按鈕 - 保持原有顏色 */
+QPushButton[class="secondary"] {
+    background-color: #6c757d;
+    color: white;
+    border-color: #6c757d;
+}
+
+QPushButton[class="secondary"]:hover {
+    background-color: #545b62;
+    border-color: #545b62;
+}
+
+QPushButton[class="success"] {
+    background-color: #28a745;
+    color: white;
+    border-color: #28a745;
+}
+
+QPushButton[class="success"]:hover {
+    background-color: #1e7e34;
+    border-color: #1e7e34;
+}
+
+QPushButton[class="warning"] {
+    background-color: #ffc107;
+    color: #212529;
+    border-color: #ffc107;
+}
+
+QPushButton[class="warning"]:hover {
+    background-color: #d39e00;
+    border-color: #d39e00;
+}
+
+QPushButton[class="danger"] {
+    background-color: #dc3545;
+    color: white;
+    border-color: #dc3545;
+}
+
+QPushButton[class="danger"]:hover {
+    background-color: #a71e2a;
+    border-color: #a71e2a;
+}
+
+/* 輸入框 */
+QLineEdit {
+    border: 2px solid #e9ecef;
+    border-radius: 8px;
+    padding: 8px 12px;
+    font-size: 14px;
+    background-color: #ffffff;
+}
+
+QLineEdit:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+/* 下拉框 */
+QComboBox {
+    border: 2px solid #e9ecef;
+    border-radius: 8px;
+    padding: 8px 12px;
+    background-color: #ffffff;
+    min-width: 120px;
+}
+
+QComboBox:hover {
+    border-color: #ced4da;
+}
+
+QComboBox::drop-down {
+    subcontrol-origin: padding;
+    subcontrol-position: top right;
+    width: 24px;
+    border-left: 1px solid #ced4da;
+    background-color: #f8f9fa;
+}
+
+QComboBox::down-arrow {
+    width: 12px;
+    height: 12px;
+}
+
+/* 列表項目 */
+QListWidget {
+    background-color: #ffffff;
+    border: 2px solid #e9ecef;
+    border-radius: 12px;
+    padding: 8px;
+}
+
+QListWidget::item {
+    padding: 12px;
+    border-radius: 8px;
+    margin: 2px;
+}
+
+QListWidget::item:hover {
+    background-color: #f8f9fa;
+}
+
+QListWidget::item:selected {
+    background-color: #e3f2fd;
+    color: #1976d2;
+}
+
+/* 滾動條 */
+QScrollBar:vertical {
+    background-color: #f8f9fa;
+    width: 12px;
+    border-radius: 6px;
+}
+
+QScrollBar::handle:vertical {
+    background-color: #ced4da;
+    border-radius: 6px;
+    min-height: 24px;
+    margin: 2px;
+}
+
+QScrollBar::handle:vertical:hover {
+    background-color: #adb5bd;
+}
+
+QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {
+    border: none;
+    background: none;
+}
+
+QScrollBar:horizontal {
+    background-color: #f8f9fa;
+    height: 12px;
+    border-radius: 6px;
+}
+
+QScrollBar::handle:horizontal {
+    background-color: #ced4da;
+    border-radius: 6px;
+    min-width: 24px;
+    margin: 2px;
+}
+
+QScrollBar::handle:horizontal:hover {
+    background-color: #adb5bd;
+}
+
+QScrollBar::add-line:horizontal, QScrollBar::sub-line:horizontal {
+    border: none;
+    background: none;
+}
+
+/* 動畫卡片 */
+QFrame[objectName="animCard"] {
+    background-color: #ffffff;
+    border: 2px solid #e9ecef;
+    border-radius: 16px;
+    padding: 16px;
+    margin: 8px 0px;
+}
+
+/* 任務項目 */
+QFrame[objectName="taskItem"] {
+    background-color: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-radius: 12px;
+    padding: 12px;
+    margin: 4px 0px;
+}
+
+QFrame[objectName="taskItem"]:hover {
+    background-color: #e9ecef;
+}
+
+/* 工具提示 */
+QToolTip {
+    background-color: #212529;
+    color: #ffffff;
+    border: none;
+    border-radius: 6px;
+    padding: 6px 10px;
+    font-size: 12px;
+}
+/* 待辦事項頁面樣式補充 - modern_styles.qss */
+
+/* 主滾動區域 */
+QScrollArea {
+    border: none;
+    background-color: #F8F9FA;
+}
+
+QScrollBar:vertical {
+    background: #F1F3F4;
+    width: 8px;
+    border-radius: 4px;
+    margin: 0;
+}
+
+QScrollBar::handle:vertical {
+    background: #C1C8CD;
+    border-radius: 4px;
+    min-height: 20px;
+    margin: 2px;
+}
+
+QScrollBar::handle:vertical:hover {
+    background: #A8B2BA;
+}
+
+QScrollBar::add-line:vertical,
+QScrollBar::sub-line:vertical {
+    height: 0;
+}
+
+/* 卡片樣式 */
+.task-card {
+    background-color: white;
+    border-radius: 16px;
+    border: 1px solid #E5E5E5;
+    padding: 20px;
+    margin: 10px 0;
+}
+
+.task-card:hover {
+    border-color: #4A90E2;
+    box-shadow: 0 2px 8px rgba(74, 144, 226, 0.1);
+}
+
+/* 統計卡片 */
+.stats-card {
+    background-color: white;
+    border-radius: 12px;
+    border: 1px solid #E5E5E5;
+    padding: 12px;
+    text-align: center;
+}
+
+/* 輸入框樣式 */
+.modern-input {
+    border: 2px solid #E5E5E5;
+    border-radius: 18px;
+    padding: 8px 16px;
+    font-size: 14px;
+    background-color: #F8F9FA;
+}
+
+.modern-input:focus {
+    border-color: #4A90E2;
+    background-color: white;
+    outline: none;
+}
+
+/* 按鈕樣式 */
+.primary-btn {
+    background-color: #4A90E2;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 10px 20px;
+}
+
+.primary-btn:hover {
+    background-color: #357ABD;
+}
+
+.primary-btn:pressed {
+    background-color: #2968A3;
+}
+
+.secondary-btn {
+    background-color: #6C757D;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 10px 20px;
+}
+
+.secondary-btn:hover {
+    background-color: #545B62;
+}
+
+.secondary-btn:disabled {
+    background-color: #ADB5BD;
+}
+
+/* 圓形按鈕 */
+.round-btn {
+    background-color: #4A90E2;
+    color: white;
+    border: none;
+    border-radius: 18px;
+    font-size: 16px;
+    font-weight: bold;
+    width: 36px;
+    height: 36px;
+}
+
+.round-btn:hover {
+    background-color: #357ABD;
+}
+
+/* 進度條樣式 */
+QProgressBar {
+    border: none;
+    border-radius: 3px;
+    background-color: #F1F3F4;
+    text-align: center;
+}
+
+QProgressBar::chunk {
+    border-radius: 3px;
+    background-color: #4A90E2;
+}
+
+/* 任務項目樣式 */
+.task-item {
+    background-color: white;
+    border-radius: 12px;
+    border: 1px solid #E5E5E5;
+    margin: 4px 0;
+    padding: 12px 16px;
+}
+
+.task-item:hover {
+    border-color: #4A90E2;
+    box-shadow: 0 2px 4px rgba(74, 144, 226, 0.1);
+}
+
+/* 標題樣式 */
+.page-title {
+    font-size: 20px;
+    font-weight: 600;
+    color: #333;
+    margin: 0;
+}
+
+.section-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+    margin: 0;
+}
+
+.subtitle {
+    font-size: 14px;
+    color: #666;
+    margin: 0;
+}
+
+/* 統計文字樣式 */
+.stats-value {
+    font-size: 20px;
+    font-weight: bold;
+    color: #4A90E2;
+}
+
+.stats-unit {
+    font-size: 12px;
+    color: #666;
+}
+
+.stats-label {
+    font-size: 10px;
+    color: #999;
+}
+
+/* 狀態指示器 */
+.status-todo {
+    color: #ADB5BD;
+}
+
+.status-doing {
+    color: #4A90E2;
+}
+
+.status-done {
+    color: #28A745;
+}
+
+/* 複選框樣式 */
+QCheckBox {
+    font-size: 14px;
+    color: #333;
+    spacing: 8px;
+}
+
+QCheckBox::indicator {
+    width: 18px;
+    height: 18px;
+    border-radius: 4px;
+    border: 2px solid #E5E5E5;
+    background-color: white;
+}
+
+QCheckBox::indicator:checked {
+    background-color: #4A90E2;
+    border-color: #4A90E2;
+    image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAiIGhlaWdodD0iOCIgdmlld0JveD0iMCAwIDEwIDgiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxwYXRoIGQ9Ik04LjUgMUwzLjUgNkwxLjUgNCIgc3Ryb2tlPSJ3aGl0ZSIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPgo8L3N2Zz4=);
+}
+
+/* 數字輸入框 */
+QSpinBox {
+    border: 2px solid #E5E5E5;
+    border-radius: 8px;
+    padding: 8px 12px;
+    font-size: 14px;
+    background-color: white;
+    min-width: 60px;
+}
+
+QSpinBox:focus {
+    border-color: #4A90E2;
+    outline: none;
+}
+
+QSpinBox::up-button, QSpinBox::down-button {
+    border: none;
+    background: transparent;
+    width: 16px;
+}
+
+QSpinBox::up-arrow {
+    image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAiIGhlaWdodD0iNiIgdmlld0JveD0iMCAwIDEwIDYiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxwYXRoIGQ9Ik0xIDVMNSAxTDkgNSIgc3Ryb2tlPSIjNjY2IiBzdHJva2Utd2lkdGg9IjEuNSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+Cjwvc3ZnPg==);
+}
+
+QSpinBox::down-arrow {
+    image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAiIGhlaWdodD0iNiIgdmlld0JveD0iMCAwIDEwIDYiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxwYXRoIGQ9Ik05IDFMNSA1TDEgMSIgc3Ryb2tlPSIjNjY2IiBzdHJva2Utd2lkdGg9IjEuNSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+Cjwvc3ZnPg==);
+}
+
+/* 動畫效果 */
+.fade-in {
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* 響應式設計 */
+@media (max-width: 768px) {
+    .task-card {
+        padding: 16px;
+        margin: 8px 0;
+    }
+    
+    .stats-card {
+        padding: 8px;
+    }
+    
+    .page-title {
+        font-size: 18px;
+    }
+}
